@@ -1,5 +1,8 @@
 # cuatro_retos
 
+#Autor: Aguilar Ortiz Gael Alejandro  1225100273
+#Grupo: GTID241 Aplicaciones Moviles 
+
 A new Flutter project.
 
 ## Getting Started
@@ -15,3 +18,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+![Reto 1 - Criptomonedas](capturas/reto1.png)
+![Reto 2 - Gatos](capturas/reto2.png)
+![Reto 3 - Clima](capturas/reto3.png)
+![Reto 4 - Peliculas](capturas/reto4.png)

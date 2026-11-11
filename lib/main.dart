@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'screens/reto1_page.dart';
+import 'screens/reto2_page.dart';
+import 'screens/reto3_page.dart';
+import 'screens/reto4_page.dart';
+
 
 void main() {
   runApp(const CuatroRetosApp());
@@ -25,18 +30,20 @@ class Reto {
   final String titulo;
   final String subtitulo;
   final IconData icono;
+  final WidgetBuilder? pantalla;
 
-  const Reto(this.titulo, this.subtitulo, this.icono);
+  const Reto(this.titulo, this.subtitulo, this.icono, [this.pantalla]);
 }
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
 
-  static const List<Reto> retos = [
-    Reto('Reto 1', 'Recomendador de películas', Icons.movie),
-    Reto('Reto 2', 'Memes de gatos', Icons.pets),
-    Reto('Reto 3', 'Clima minimalista', Icons.wb_sunny),
-    Reto('Reto 4', 'Convertidor de criptomonedas', Icons.currency_bitcoin),
+  static final List<Reto> retos = [
+    Reto('Reto 1', 'Recomendador de películas', Icons.movie,
+        (_) => const Reto1Page()),
+    Reto('Reto 2', 'Memes de gatos', Icons.pets, (_) => const Reto2Page()),
+    Reto('Reto 3', 'Clima minimalista', Icons.wb_sunny, (_) => const Reto3Page()),
+    Reto('Reto 4', 'Convertidor de criptomonedas', Icons.currency_bitcoin, (_) => const Reto4Page()),
   ];
 
   @override
@@ -55,9 +62,16 @@ class MenuPage extends StatelessWidget {
               subtitle: Text(reto.subtitulo),
               trailing: const Icon(Icons.arrow_forward_ios),
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${reto.titulo} próximamente')),
-                );
+                if (reto.pantalla == null) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('${reto.titulo} próximamente')),
+                  );
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: reto.pantalla!),
+                  );
+                }
               },
             ),
           );
